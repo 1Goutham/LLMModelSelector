@@ -112,7 +112,7 @@ function App() {
       <div className="min-h-screen bg-gradient-to-br from-[#1f004d] via-[#7b1fa2] to-[#ff4081] flex items-center justify-center">
         <div className="text-center">
           <Loader className="w-12 h-12 animate-spin mx-auto mb-4 text-white" />
-          <p className="text-white font-medium">Loading models...</p>
+          <p className="text-white font-medium text-sm sm:text-base">Loading models...</p>
         </div>
       </div>
     );
@@ -122,7 +122,7 @@ function App() {
   if (errorMessage) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-red-100 flex items-center justify-center">
-        <p className="text-red-600 font-medium">{errorMessage}</p>
+        <p className="text-red-600 font-medium text-sm sm:text-base">{errorMessage}</p>
       </div>
     );
   }
@@ -131,31 +131,33 @@ function App() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#1f004d] via-[#7b1fa2] to-[#ff4081] pt-6 font-sans">
       {/* Header */}
-      <header className="px-36 py-6 flex justify-between items-center">
-        <img src="/dwlogo.png" className="h-8" alt="DeepWeaver" />
-        <img src="/OracleVector.png" className="h-5" alt="Oracle" />
+      <header className="px-4 sm:px-10 md:px-20 lg:px-36 py-4 sm:py-6 flex justify-between items-center">
+        <img src="/dwlogo.png" className="h-6 sm:h-8" alt="DeepWeaver" />
+        <img src="/OracleVector.png" className="h-4 sm:h-5" alt="Oracle" />
       </header>
 
-      <div className="mx-36 pb-4">
+      <div className="mx-4 sm:mx-10 md:mx-20 lg:mx-36 pb-4">
         <hr className="border-white/30" />
       </div>
 
       {/* Page Title */}
-      <div className="mt-8 ml-36">
-        <div className="flex items-center gap-3">
-          <img src="/dwicon.png" className="h-8" alt="LLM Icon" />
-          <h1 className="text-white text-4xl font-semibold tracking-wide">LLM Model Selector</h1>
+      <div className="mt-4 sm:mt-6 ml-4 sm:ml-10 md:ml-20 lg:ml-36">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <img src="/dwicon.png" className="h-5 sm:h-8" alt="LLM Icon" />
+          <h1 className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold tracking-wide">
+            LLM Model Selector
+          </h1>
         </div>
-        <p className="text-white/80 text-2xl mt-2 font-light">
+        <p className="text-white/80 text-xs sm:text-sm md:text-lg mt-1 sm:mt-2 font-light">
           Find and compare <span className="font-semibold">the best production-ready LLMs</span>
         </p>
       </div>
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-6 py-10">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <main className="max-w-7xl mx-auto px-4 sm:px-10 md:px-20 lg:px-6 py-6 sm:py-10">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 sm:gap-6">
           {/* Filters */}
-          <aside className="bg-white/10 backdrop-blur-lg rounded-2xl p-5 shadow-lg border border-white/20">
+          <aside className="bg-white/10 backdrop-blur-lg rounded-2xl p-4 sm:p-5 shadow-lg border border-white/20">
             <FilterPanel
               searchQuery={searchQuery}
               setSearchQuery={setSearchQuery}
@@ -176,12 +178,12 @@ function App() {
           {/* Models List */}
           <section className="lg:col-span-3">
             {filteredModels.length === 0 ? (
-              <div className="bg-white/10 backdrop-blur-lg p-12 text-center rounded-2xl shadow-lg border border-white/20">
-                <p className="text-white/80 text-lg font-medium">No models found.</p>
-                <p className="text-white/50 text-sm mt-1">Try adjusting filters.</p>
+              <div className="bg-white/10 backdrop-blur-lg p-6 sm:p-8 rounded-2xl shadow-lg border border-white/20 text-center">
+                <p className="text-white/80 text-sm sm:text-base font-medium">No models found.</p>
+                <p className="text-white/50 text-xs sm:text-sm mt-1">Try adjusting filters.</p>
               </div>
             ) : (
-              <div className="grid grid-cols-1 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 {filteredModels.map((model) => (
                   <ModelCard key={model.id} model={model} onDownload={handleDownload} />
                 ))}
